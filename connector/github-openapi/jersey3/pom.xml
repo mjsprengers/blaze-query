@@ -126,11 +126,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator-maven-plugin</artifactId>
-            <version>7.9.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
     <!-- Until 7.9.0 is released -->
@@ -154,14 +149,13 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>7.9.0-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>https://github.com/github/rest-api-description/raw/main/descriptions-next/api.github.com/api.github.com.json</inputSpec>
+                            <inputSpec>https://raw.githubusercontent.com/github/rest-api-description/108f3b249fe3c0f0889a40737552c8d373bbfdc4/descriptions-next/api.github.com/api.github.com.json</inputSpec>
                             <generatorName>java</generatorName>
                             <modelPackage>com.blazebit.query.connector.github.v0314.model</modelPackage>
                             <apiPackage>com.blazebit.query.connector.github.v0314.api</apiPackage>
@@ -177,9 +171,6 @@
                                 <serializationLibrary>jackson</serializationLibrary>
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
-                            <openapiNormalizer>
-                                REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true
-                            </openapiNormalizer>
                         </configuration>
                     </execution>
                 </executions>

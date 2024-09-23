@@ -24,7 +24,6 @@ import com.blazebit.query.connector.base.DataFormats;
 import com.blazebit.query.connector.github.v0314.api.TeamsApi;
 import com.blazebit.query.connector.github.v0314.invoker.ApiClient;
 import com.blazebit.query.connector.github.v0314.invoker.ApiException;
-import com.blazebit.query.connector.github.v0314.model.Organization;
 import com.blazebit.query.connector.github.v0314.model.OrganizationSimple;
 import com.blazebit.query.connector.github.v0314.model.Team;
 import com.blazebit.query.spi.DataFetchContext;
