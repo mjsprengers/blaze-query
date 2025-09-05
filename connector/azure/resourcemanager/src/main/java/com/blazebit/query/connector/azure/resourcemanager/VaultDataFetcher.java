@@ -7,6 +7,9 @@ package com.blazebit.query.connector.azure.resourcemanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.azure.resourcemanager.AzureResourceManager;
 import com.azure.resourcemanager.keyvault.models.Vault;
@@ -36,6 +39,11 @@ public class VaultDataFetcher implements DataFetcher<AzureResourceVault>, Serial
 			List<? extends AzureResourceManagerResourceGroup> resourceGroups = context.getSession().getOrFetch(
 					AzureResourceManagerResourceGroup.class );
 			for ( AzureResourceManager resourceManager : resourceManagers ) {
+				Set<String> rgNamesForSub = resourceGroups.stream()
+						.filter(rg -> Objects.equals(rg.getTenantId(), resourceManager.tenantId())
+								&& Objects.equals(rg.getSubscriptionId(), resourceManager.subscriptionId()))
+						.map(AzureResourceManagerResourceGroup::getResourceGroupName)
+						.collect( Collectors.toSet());
 				for ( AzureResourceManagerResourceGroup resourceGroup : resourceGroups ) {
 					if ( resourceManager.tenantId().equals( resourceGroup.getTenantId() ) ) {
 						for ( Vault vault : resourceManager.vaults()
